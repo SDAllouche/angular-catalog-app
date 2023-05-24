@@ -1,1 +1,36 @@
-<p>products works!</p>
+<div class="container">
+  <div *ngIf="errorMessage" class="text-danger">
+    {{errorMessage}}
+  </div>
+  <div class="card">
+    <div class="card-header">Products List</div>
+    <div class="card-body">
+      <table class="table" *ngIf="products">
+        <thead>
+        <tr>
+          <th>Id</th> <th>Name</th> <th>Price</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let p of products">
+          <td>{{p.id}}</td>
+          <td>{{p.name}}</td>
+          <td>{{p.price}}</td>
+          <td>
+            <button class="btn btn-info">
+              <i class="bi bi-pen"></i>
+            </button>
+          </td>
+          <td>
+            <button (click)="deleteProduct(p)" class="btn btn-danger">
+              <i class="bi bi-trash"></i>
+            </button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+
+</div>
