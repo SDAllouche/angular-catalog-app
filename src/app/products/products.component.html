@@ -1,14 +1,14 @@
 <div class="container">
-  <div *ngIf="errorMessage" class="text-danger">
-    {{errorMessage}}
-  </div>
+  <ng-template  #errorTemplate>
+    <div class="text-danger">{{errorMessage}}</div>
+  </ng-template>
   <div class="card">
     <div class="card-header">Products List</div>
     <div class="card-body">
-      <table class="table" *ngIf="products">
+      <table class="table" *ngIf="products; else errorTemplate">
         <thead>
         <tr>
-          <th>Id</th> <th>Name</th> <th>Price</th>
+          <th>Id</th> <th>Name</th> <th>Price</th><th>Promotion</th><th></th><th></th>
         </tr>
         </thead>
         <tbody>
@@ -16,6 +16,7 @@
           <td>{{p.id}}</td>
           <td>{{p.name}}</td>
           <td>{{p.price}}</td>
+          <td>{{p.promotion}}</td>
           <td>
             <button class="btn btn-info">
               <i class="bi bi-pen"></i>
